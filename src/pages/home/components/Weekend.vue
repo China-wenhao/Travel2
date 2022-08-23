@@ -2,9 +2,9 @@
     <div>
         <div class="title">周末去哪</div>
         <ul>
-            <li class="item border-bottom" v-for="item in recommendList" :key="item.id">
+            <li class="item border-bottom" v-for="item in list" :key="item.id">
                 <div class="item-img-wrapper">
-                    <img :src="item.url" class="item-img">
+                    <img :src="item.imgUrl" class="item-img">
                 </div>
                 <div class="item-info">
                     <p class="item-title">{{ item.title }}</p>
@@ -18,28 +18,31 @@
 <script>
 export default {
     name: "HeaderWeekend",
+    props: {
+        list: Array
+    },
     data() {
         return {
-            recommendList: [
-                {
-                    id: "0001",
-                    url: "	https://imgs.qunarzz.com/p/tts8/1706/84/0d1ebee065a4ea02.jpg",
-                    title: "【茶马古道·骑马·湿地公园·网红打卡】",
-                    desc: "拉市海一日游全新玩法"
-                },
-                {
-                    id: "0002",
-                    url: "	https://imgs.qunarzz.com/p/tts8/1706/84/0d1ebee065a4ea02.jpg",
-                    title: "【茶马古道·骑马·湿地公园·网红打卡】",
-                    desc: "拉市海一日游全新玩法"
-                },
-                {
-                    id: "0003",
-                    url: "	https://imgs.qunarzz.com/p/tts8/1706/84/0d1ebee065a4ea02.jpg",
-                    title: "【茶马古道·骑马·湿地公园·网红打卡】",
-                    desc: "拉市海一日游全新玩法"
-                }
-            ]
+            // recommendList: [
+            //     {
+            //         id: "0001",
+            //         url: "	https://imgs.qunarzz.com/p/tts8/1706/84/0d1ebee065a4ea02.jpg",
+            //         title: "【茶马古道·骑马·湿地公园·网红打卡】",
+            //         desc: "拉市海一日游全新玩法"
+            //     },
+            //     {
+            //         id: "0002",
+            //         url: "	https://imgs.qunarzz.com/p/tts8/1706/84/0d1ebee065a4ea02.jpg",
+            //         title: "【茶马古道·骑马·湿地公园·网红打卡】",
+            //         desc: "拉市海一日游全新玩法"
+            //     },
+            //     {
+            //         id: "0003",
+            //         url: "	https://imgs.qunarzz.com/p/tts8/1706/84/0d1ebee065a4ea02.jpg",
+            //         title: "【茶马古道·骑马·湿地公园·网红打卡】",
+            //         desc: "拉市海一日游全新玩法"
+            //     }
+            // ]
         }
     }
 }
