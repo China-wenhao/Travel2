@@ -24,15 +24,15 @@ export default {
         HomeRecommend,
         HomeWeekend
     },
-    methods: {
-        getHomeInfo(){
-            axios.get('/api/index.json')
-            .then(this.getHomeInfoSucc)
+     methods:{
+           getHomeInfo(){
+                axios.get('/mock/index.json')
+                .then(this.getHomeInfoSucc)
+            },
+            getHomeInfoSucc(res){
+               console.log(res);
+            }
         },
-        getHomeInfoSucc(res){
-            console.log(res);
-        }
-    },
     mounted() {
         this.getHomeInfo()
     }
