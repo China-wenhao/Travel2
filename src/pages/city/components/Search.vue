@@ -5,7 +5,8 @@
         </div>
         <div class="search-content" ref="search" v-show="keyWord">
             <ul>
-                <li class="search-item border-bottom" v-for="item in list" :key="item.id">{{ item.name }}</li>
+                <li class="search-item border-bottom" v-for="item in list" :key="item.id"
+                    @click="handdleCityCilck(item.name)">{{ item.name }}</li>
                 <li class="search-item border-bottom" v-show="hasNoData">没有找到匹配数据</li>
             </ul>
         </div>
@@ -13,6 +14,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 import BScroll from 'better-scroll';
 export default {
     name: "CitySearch",
@@ -23,8 +25,16 @@ export default {
             timer: null
         }
     },
-    computed:{
-        hasNoData(){
+    methods: {
+        handdleCityCilck(city) {
+            // this.$store.commit('changeCity',city)
+            this.changeCity(city)
+            this.$router.push("/")
+        },
+        ...mapMutations(["changeCity"])
+    },
+    computed: {
+        hasNoData() {
             return !this.list.length
         }
     },
@@ -33,8 +43,8 @@ export default {
             if (this.timer) {
                 clearTimeout(this.timer)
             }
-            if(!this.keyWord){
-                this.list=[]
+            if (!this.keyWord) {
+                this.list = []
                 return
             }
             this.timer = setTimeout(() => {
@@ -59,8 +69,8 @@ export default {
         })
     },
     updated() {
-    this.scroll.refresh()
-  },
+        this.scroll.refresh()
+    },
 }
 </script>
 

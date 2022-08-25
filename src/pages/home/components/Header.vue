@@ -8,6 +8,7 @@
         输入城市/景点/游玩主题</div>
         <router-link to="/city">
         <div class="header-right">
+        <!-- {{this.$store.state.city}} -->
         {{this.city}}
         <span class="iconfont arrow-icon">&#xe600;</span>
         </div>
@@ -16,54 +17,50 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
     name: "HomeHeader",
     props:{
-        city:String
+        // city:String
+    },
+    computed:{
+        ...mapState(['city'])
     }
 }
 </script>
 
-<style scoped>
-.iconfont{
-    color: #fff;
-}
-.header {
-    display: flex;
-    line-height: 0.86rem;
-    background-color: #00bcd4;
-    color: #fff;
-}
-
-.header-left {
-    width: .64rem;
-    float: left
-}
-.back-icon{
-    text-align: center;
-}
-
-.header-input {
-    flex: 1;
-    background-color: #fff;
-    line-height: 0.64rem;
-    height: 0.64rem;
-    color: #ccc;
-    margin-top:0.12rem;
-    margin-left: 0.2rem;
-    margin-bottom: 12px;
-    border-radius: 0.1rem;
-    padding-left: 0.2rem;
-}
-
-.header-right {
-    width: 1.24rem;
-    float: right;
-    text-align: center;
-    color: #fff;
-}
-.arrow-icon{
-    font-size: 0.24rem;
-}
+<style lang="stylus" scoped>
+  .header
+        display:flex
+        height:.86rem
+        line-height .86rem
+        background:#00bcd4
+        color:#fff
+        .header-left
+            width:.64rem
+            float:left
+            .back-icon
+               text-align:center
+               font-size:.4rem
+        .header-input
+            flex:1
+            height:.64rem
+            line-height .64rem  
+            margin-top:.12rem
+            margin-left:.2rem
+            padding-left:.2rem
+            background:#fff
+            border-radius:.1rem
+            color:#999
+        .header-right
+            min-width:1.04rem
+            padding 0 .1em
+            float:right
+            text-align:center
+            color:#fff
+            .arrow-icon
+                font-size:.24rem
+                margin-left:-.04rem
+                color:#fff
 
 </style>

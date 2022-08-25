@@ -6,7 +6,6 @@ import './assets/styles/reset.css'
 import './assets/styles/border.css'
 import fastClick from 'fastclick';
 import './assets/styles/iconfont.css'
-
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 Vue.use(VueAwesomeSwiper)
