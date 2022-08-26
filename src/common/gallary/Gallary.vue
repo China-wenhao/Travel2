@@ -9,7 +9,7 @@
                     <img class="gallary-img"
                         :src="item">
                 </swiper-slide>
-                <div class="swiper-pagination" slot="pagination">aaaaaaaa</div>
+                <div class="swiper-pagination" slot="pagination">aaa</div>
             </swiper>
         </div>
     </div>
