@@ -48,8 +48,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-    .contains
-        height 50rem
+    // .contains
+    //     height 50rem
     .header-abs
         position absolute;
         left .2rem
