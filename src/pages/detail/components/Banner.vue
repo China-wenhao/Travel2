@@ -1,39 +1,43 @@
 <template>
-<div>
-    <div class="banner" @click="handdleBannerClick ">
-        <img class="banner-img"
-            src="http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_600x330_bf9c4904.jpg">
+    <div>
+        <div class="banner" @click="handdleBannerClick">
+            <img class="banner-img" :src="bannerImg">
 
-        <div class="banner-info">
-            <div class="banner-title">aaaaa</div>
-            <div class="banner-number"><span class="iconfont">&#xe601;</span> 39</div>
+            <div class="banner-info">
+                <div class="banner-title">{{ this.sightName }}</div>
+                <div class="banner-number"><span class="iconfont">&#xe601;</span>{{ this.bannerImgs.length }}</div>
+            </div>
         </div>
+        <common-gallary :imgs="bannerImgs" v-show="showGallary" @close="handdleGallaryClose"></common-gallary>
     </div>
-<common-gallary :imgs="imgs" v-show="showGallary" @close="handdleGallaryClose"></common-gallary>
-</div>
 </template>
 
 <script>
 import CommonGallary from '@/common/gallary/Gallary.vue'
 export default {
     name: "DetailBanner",
-    data(){
-        return{
-            showGallary:false,
-            imgs:['https://source.qunarzz.com/site/images/wns/20220817_qunar_dujia_homepage_a750x192_v2.jpg',
+    props: {
+        sightName: String,
+        bannerImg: String,
+        bannerImgs: Array
+    },
+    data() {
+        return {
+            showGallary: false,
+            imgs: ['https://source.qunarzz.com/site/images/wns/20220817_qunar_dujia_homepage_a750x192_v2.jpg',
                 'https://source.qunarzz.com/site/images/wns/20220817_qunar_dujia_homepage_a750x192_v2.jpg',
                 'https://source.qunarzz.com/site/images/wns/20220817_qunar_dujia_homepage_a750x192_v2.jpg']
         }
     },
-    methods:{
-        handdleBannerClick(){
-            this.showGallary=true
+    methods: {
+        handdleBannerClick() {
+            this.showGallary = true
         },
-        handdleGallaryClose(){
-            this.showGallary=false
+        handdleGallaryClose() {
+            this.showGallary = false
         }
     },
-    components:{
+    components: {
         CommonGallary
     }
 }

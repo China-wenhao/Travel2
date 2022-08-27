@@ -1,9 +1,9 @@
 <template>
     <div>
-        <detail-banner></detail-banner>
+        <detail-banner :sightName="sightName" :bannerImg="bannerImg" :bannerImgs="gallaryImgs"></detail-banner>
         <detail-header></detail-header>
         <div class="cotent">
-            <detail-list  :list="list"/>
+            <detail-list :list="list" />
         </div>
     </div>
 </template>
@@ -12,36 +12,41 @@
 import DetailBanner from './components/Banner.vue';
 import DetailHeader from './components/Header.vue'
 import DetailList from './components/List.vue'
+import axios from 'axios';
 export default {
     name: "Detail-detail",
     components: { DetailBanner, DetailHeader, DetailList },
     data() {
         return {
-            list: [
-                {
-                    title: "成人票",
-                    children:[
-                        {
-                            title:"成人三馆联票",
-                            children:[{
-                                title:"成人三馆门票--某一连锁店销售"
-                            }]
-                        },{
-                            title:"成人五馆联票"
-                        },
-                    ]
-                },
-                {
-                    title: "学生票"
-                },
-                {
-                    title: "儿童票"
-                },
-                {
-                    title: "特惠票"
-                },
-            ]
+            sightName: "",
+            bannerImg: "",
+            gallaryImgs: [],
+            list: [],
         }
+    },
+    methods: {
+        getDetailInfo() {
+            axios.get("/mock/detail.json", {
+                params: {
+                    id: this.$route.params.id
+                }
+            }).then(this.handdleGetDataSucc)
+        },
+        handdleGetDataSucc(res) {
+            res = res.data
+            if (res.ret && res.data) {
+                const data = res.data
+                // console.log(data);
+                this.sightName = data.sightName
+                this.bannerImg = data.bannerImg
+                this.gallaryImgs = data.gallaryImgs
+                this.list = data.categoryList
+            }
+        }
+    },
+
+    mounted() {
+        this.getDetailInfo()
     }
 }
 </script>
